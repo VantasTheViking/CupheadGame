@@ -42,6 +42,7 @@ public class PlayerControl : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.Euler(new Vector3(0, 0, 90)));
 
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+        bullet.layer = 3;
 
         Destroy(bullet, 5);
     }
