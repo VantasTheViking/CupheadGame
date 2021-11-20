@@ -165,8 +165,8 @@ MonoBehaviour:
   _planePrefab: {fileID: 6837555148578019749, guid: f4bebe9c4f6296344ad62d92921272f0, type: 3}
   _top: {fileID: 2112641359}
   _bottom: {fileID: 1342746459}
-  _spawnDelay: 1
-  _planeSpeed: 1
+  _spawnDelay: 8
+  _planeSpeed: 3
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

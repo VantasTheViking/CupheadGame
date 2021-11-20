@@ -18,15 +18,9 @@ public class PlaneSpawn : MonoBehaviour
     [SerializeField] private float _spawnDelay;
 
     [Tooltip("Speed of spawned plane (float)")]
-    [SerializeField] private float _planeSpeed;
+    [SerializeField] public float _planeSpeed;
 
     private float timeToNext = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

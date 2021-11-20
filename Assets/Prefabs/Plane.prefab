@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8828452187917640257}
   - component: {fileID: 9203973400506229165}
   - component: {fileID: -6999560862286959652}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,3 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 120390567460456021, guid: 7d039a898d538df4aac133afd2dbd10a, type: 3}
+  _bulletSpawn: {fileID: 1272487517798426699}
+  _bulletSpeed: 2
+  _planeSpeed: 3
+  _self: {fileID: 6837555148578019749}
