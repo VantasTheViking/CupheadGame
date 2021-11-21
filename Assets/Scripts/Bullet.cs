@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.layer == _layer)
         {
             Destroy(_self, 0);
+            Destroy(collision.gameObject, 0);
         }
     }
 }

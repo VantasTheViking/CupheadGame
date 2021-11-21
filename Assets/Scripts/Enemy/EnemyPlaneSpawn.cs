@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlaneSpawn : MonoBehaviour
+public class EnemyPlaneSpawn : MonoBehaviour
 {
     [Tooltip("Plane prefab (GameObject)")]
     [SerializeField] private GameObject _planePrefab;

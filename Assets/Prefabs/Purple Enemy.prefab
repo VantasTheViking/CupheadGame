@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 9203973400506229165}
   - component: {fileID: -6999560862286959652}
   m_Layer: 6
-  m_Name: Plane
-  m_TagString: Untagged
+  m_Name: Purple Enemy
+  m_TagString: Purple Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 0.037148237, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.5943396, g: 0, b: 0.5477997, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,6 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 120390567460456021, guid: 7d039a898d538df4aac133afd2dbd10a, type: 3}
   _bulletSpawn: {fileID: 1272487517798426699}
-  _bulletSpeed: 2
-  _planeSpeed: 3
+  _bulletSpeed: 1.25
   _self: {fileID: 6837555148578019749}
