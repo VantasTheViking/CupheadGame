@@ -5,8 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Bullet : MonoBehaviour
 {
-    [Tooltip("This GameObject (GameObject)")]
-    [SerializeField] private GameObject _self;
 
     [Tooltip("Layer to collide with (int")]
     [SerializeField] private int _layer;
@@ -15,8 +13,8 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.layer == _layer)
         {
-            Destroy(_self, 0);
-            Destroy(collision.gameObject, 0);
+            Destroy(gameObject, 0.1f);
+            //Destroy(collision.gameObject, 0);
         }
     }
 }

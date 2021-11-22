@@ -14,18 +14,13 @@ public class EnemyPlaneFunction : MonoBehaviour
     [Tooltip("Speed of spawned bullet (float)")]
     [SerializeField] private float _bulletSpeed;
 
-    [Tooltip("Speed of plane, keep consistent with speed on spawn object (float)")]
-    float _planeSpeed;
-
-    [Tooltip("This Game Object (GameObject)")]
-    [SerializeField] private GameObject _self;
-
 
     private bool shot = false;
+    private float _planeSpeed;
 
     Transform _trans;
     Rigidbody2D _rigid;
-    GameObject _position;
+    GameObject _player;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +28,7 @@ public class EnemyPlaneFunction : MonoBehaviour
         _trans = GetComponent<Transform>();
         _rigid = GetComponent<Rigidbody2D>();
         _planeSpeed = Camera.main.GetComponent<EnemyPlaneSpawn>()._planeSpeed;
-        _position = GameObject.Find("Player");
+        _player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -53,7 +48,7 @@ public class EnemyPlaneFunction : MonoBehaviour
 
         if(_trans.position.x > 13)
         {
-            Destroy(_self, 0);
+            Destroy(gameObject, 0);
         }
     }
 
@@ -76,16 +71,16 @@ public class EnemyPlaneFunction : MonoBehaviour
 
     void shoot()
     {
-        if (this.tag.Equals("Purple Enemy"))
+        if (tag.Equals("Purple Enemy"))
         {
             var Bullet = Instantiate(_bulletPrefab, _bulletSpawn.transform.position, Quaternion.Euler(new Vector3(0, 0, 90)));
 
-            Vector3 velocity = _position.transform.position - _bulletSpawn.transform.position;
+            Vector3 velocity = _player.transform.position - _bulletSpawn.transform.position;
             Bullet.GetComponent<Rigidbody2D>().velocity = velocity * _bulletSpeed;
             Destroy(Bullet, 5);
         }
 
-        else if (this.tag.Equals("Green Enemy"))
+        else if (tag.Equals("Green Enemy"))
         {
             float spreadAngle = 20;
 
@@ -93,22 +88,22 @@ public class EnemyPlaneFunction : MonoBehaviour
             {
                 var Bullet = Instantiate(_bulletPrefab, _bulletSpawn.transform.position, Quaternion.Euler(new Vector3(0, 0, 90)));
 
-                var dir = _position.transform.position - _bulletSpawn.transform.position;
+                var dir = _player.transform.position - _bulletSpawn.transform.position;
                 float angle = 0;
 
                 switch (i)
                 {
                     case 0:
-                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - (spreadAngle / (float) 2.5);
+                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - (spreadAngle / 2.5f);
                         break;
                     case 1:
-                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - spreadAngle * (float)1.25;
+                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - spreadAngle * 1.25f;
                         break;
                     case 2:
-                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + (spreadAngle / (float) 2.5);
+                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + (spreadAngle / 2.5f);
                         break;
                     case 3:
-                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + spreadAngle * (float)1.25;
+                        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + spreadAngle * 1.25f;
                         break;
                     default:
                         break;
@@ -125,11 +120,7 @@ public class EnemyPlaneFunction : MonoBehaviour
 
                 
             }
-            
-            
-
         }
-
         shot = true;
     }
 }

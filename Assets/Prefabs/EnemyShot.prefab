@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4756324950138263098}
   - component: {fileID: 7991427097365370739}
   - component: {fileID: -7948663164739927}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: EnemyShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,5 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2adebb7fcb5bb4cb258815f52b7d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _self: {fileID: 120390567460456021}
   _layer: 7
