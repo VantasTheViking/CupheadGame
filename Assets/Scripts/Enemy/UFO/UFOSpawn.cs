@@ -9,7 +9,7 @@ public class UFOSpawn : MonoBehaviour
     [SerializeField] private GameObject _UFOPrefab;
 
     [Tooltip("Spawn point of UFO (GameObject)")]
-    [SerializeField] private GameObject _spawnPoint;
+    [SerializeField] public GameObject _spawnPoint;
 
     [Tooltip("Time between plane spawns (float)")]
     [SerializeField] private float _spawnDelay;

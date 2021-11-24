@@ -39,7 +39,7 @@ public class PlayerControl : MonoBehaviour
 
     void ShootBullet()
     {
-        var bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+        var bullet = Instantiate(bulletPrefab, bulletSpawn.position + new Vector3(0, ((float)Random.Range(-20, 20)) / 100, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
 
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         bullet.layer = 3;
