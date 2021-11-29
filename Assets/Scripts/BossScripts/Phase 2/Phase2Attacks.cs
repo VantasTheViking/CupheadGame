@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBehaviour : MonoBehaviour
+public class Phase2Attacks : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject aimerChild;
@@ -26,11 +26,6 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] GameObject bubbleMeteorSpawn1;
     [SerializeField] GameObject bubbleMeteorSpawn2;
 
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -95,7 +90,7 @@ public class BossBehaviour : MonoBehaviour
             return false;
         }
     }
-    void ShootAtAimer()
+    public void ShootAtAimer()
     {
         var bullet = Instantiate(waterBulletPrefab, transform.position, aimerParent.transform.rotation);
         bullet.transform.Rotate(Vector3.forward * 90);
@@ -106,7 +101,7 @@ public class BossBehaviour : MonoBehaviour
         Destroy(bullet, 7);
     }
 
-    void SummonBubbleMeteor()
+    public void SummonBubbleMeteor()
     {
         float bubbleXPos = Random.Range(bubbleMeteorSpawn1.transform.position.x, bubbleMeteorSpawn2.transform.position.x);
         float bubbleYPos = Random.Range(bubbleMeteorSpawn1.transform.position.y, bubbleMeteorSpawn2.transform.position.y);
