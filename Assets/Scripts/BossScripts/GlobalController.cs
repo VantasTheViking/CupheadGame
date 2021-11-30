@@ -5,11 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class GlobalController : MonoBehaviour
 {
-    [Tooltip("The fraction of max health/x to change to phase 2 (float)")]
-    [SerializeField] private float _phase2Divider;
+    [Tooltip("The fraction of max health/x to change phase (float)")]
+    [SerializeField] private float _phaseDivider;
 
-    [Tooltip("The fraction of max health/x to change to phase 3 (float)")]
-    [SerializeField] private float _phase3Divider;
+    GameObject cameraObject;
 
     int _health;
     int maxHealth;
@@ -22,6 +21,9 @@ public class GlobalController : MonoBehaviour
     void Start()
     {
         maxHealth = GetComponent<BossHealth>().getHealth();
+        //Debug.Log(maxHealth);
+
+        cameraObject = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -34,14 +36,16 @@ public class GlobalController : MonoBehaviour
             Destroy(gameObject, 0);
         }
 
-        if (maxHealth / _phase2Divider <= _health && (!phase2 || !phase3))
+        if (maxHealth - (maxHealth / _phaseDivider) >= _health && (!phase2 || !phase3))
         {
+            Debug.Log("Phase 2 start");
             endPhase1();
             startPhase2();
         }
 
-        if(maxHealth / _phase3Divider <= _health && (!phase1 || !phase3))
+        if(maxHealth - (maxHealth / _phaseDivider)*2 >= _health && (!phase1 || !phase3))
         {
+            Debug.Log("Phase 3 start");
             endPhase2();
             startPhase3();
         }
@@ -50,7 +54,13 @@ public class GlobalController : MonoBehaviour
     void endPhase1()
     {
         phase1 = false;
+        //since we used multiple components I think this is necessary
+        for(int i = 0; i < cameraObject.GetComponents<EnemyPlaneSpawn>().Length; i++)
+        {
+            cameraObject.GetComponents<EnemyPlaneSpawn>()[i].enabled = false;
+        }
 
+        //remove comment once Phase1Attacks is made
         //gameObject.GetComponent<Phase1Attacks>().enabled = false;
     }
 
@@ -71,7 +81,9 @@ public class GlobalController : MonoBehaviour
     void startPhase3()
     {
         phase3 = true;
+        cameraObject.GetComponent<UFOSpawn>().enabled = true;
 
+        //remove comment once Phase1Attacks is made
         //gameObject.GetComponent<Phase3Attacks>().enabled = true;
     }
 }

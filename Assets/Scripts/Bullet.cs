@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    [Tooltip("Layer to collide with (int")]
+    [Tooltip("Layer to collide with (int)")]
     [SerializeField] private int _layer;
 
     private void OnCollisionEnter2D(Collision2D collision)

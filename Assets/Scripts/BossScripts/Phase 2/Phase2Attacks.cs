@@ -4,37 +4,49 @@ using UnityEngine;
 
 public class Phase2Attacks : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Tooltip("Parent of aimer object (GameObject)")]
     [SerializeField] GameObject aimerChild;
+
+    [Tooltip("Aimer object (GameObject)")]
     [SerializeField] GameObject aimerParent;
 
-
+    [Tooltip("rotation per frame in degrees (float)")]
     [SerializeField] float rateOfRotation;
 
-    float shotDelay = 0;
+    [Tooltip("Amount seconds between each bullet (float)")]
     [SerializeField] float waveOfBullets_RateOfFire;
-    [SerializeField] GameObject waterBulletPrefab;
-    [SerializeField] float waterBulletSpeed;
-    [SerializeField] int noOfReloadWaterBullets;
-    int waterBulletsLeft = 0;
 
+    [Tooltip("Prefab for bullet (GameObject)")]
+    [SerializeField] GameObject waterBulletPrefab;
+
+    [Tooltip("Speed of bullet (float)")]
+    [SerializeField] float waterBulletSpeed;
+
+    [Tooltip("Amount seconds between each meteor (float)")]
     [SerializeField] float bubbleMeteorFrequency;
+
+    [Tooltip("Number of meteors to spawn per spawn (int)")]
+    [SerializeField] int meteorCount;
+
+    [Tooltip("Prefab for meteor (GameObject)")]
     [SerializeField] GameObject bubbleMeteorPrefab;
+
+    [Tooltip("Speed of meteor (float)")]
     [SerializeField] float bubbleMeteorSpeed;
-    [SerializeField] int noOfReloadBubbleMeteor;
-    int bubbleMeteorsLeft = 0;
+
+    [Tooltip("Spawn position 1 of metoer (GameObject)")]
     [SerializeField] GameObject bubbleMeteorSpawn1;
+
+    [Tooltip("Spawn position 2 of metoer (GameObject)")]
     [SerializeField] GameObject bubbleMeteorSpawn2;
 
+    float shotDelay = 0;
+    float meteorShotDelay = 0;
 
     // Update is called once per frame
     void Update()
     {
-
         RotateAimer();
-
-        BossEvents();
-
 
         if (waveOfBullets_CanShoot())
         {
@@ -42,33 +54,12 @@ public class Phase2Attacks : MonoBehaviour
         }
         if (CanSummonBubbleMeteor())
         {
-            SummonBubbleMeteor();
+            for(int i = 0; i <= meteorCount; i++)
+            {
+                SummonBubbleMeteor();
+            }
         }
 
-    }
-
-    void BossEvents()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            AddWaterBullets();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            AddBubbleMeteors();
-        }
-    }
-
-
-    void AddWaterBullets()
-    {
-        waterBulletsLeft += noOfReloadWaterBullets;
-        aimerParent.transform.rotation = Quaternion.Euler(0,0,-90);
-    }
-
-    void AddBubbleMeteors()
-    {
-        bubbleMeteorsLeft += noOfReloadBubbleMeteor;
     }
 
     void RotateAimer()
@@ -79,9 +70,9 @@ public class Phase2Attacks : MonoBehaviour
 
     bool waveOfBullets_CanShoot()
     {
-        if((shotDelay < Time.realtimeSinceStartup) && (waterBulletsLeft > 0))
+        if(shotDelay < Time.realtimeSinceStartup)
         {
-            Debug.Log(waterBulletsLeft);
+            //Debug.Log(waterBulletsLeft);
             shotDelay = Time.realtimeSinceStartup + waveOfBullets_RateOfFire;
             return true;
         }
@@ -96,7 +87,6 @@ public class Phase2Attacks : MonoBehaviour
         bullet.transform.Rotate(Vector3.forward * 90);
 
         bullet.GetComponent<Rigidbody2D>().velocity = (aimerChild.transform.position - transform.position).normalized * waterBulletSpeed;
-        waterBulletsLeft -= 1;
 
         Destroy(bullet, 7);
     }
@@ -108,18 +98,15 @@ public class Phase2Attacks : MonoBehaviour
 
         var bubble = Instantiate(bubbleMeteorPrefab, new Vector2(bubbleXPos,bubbleYPos), Quaternion.Euler(0,0,0));
         
-
         bubble.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.33f,-0.66f) * bubbleMeteorSpeed;
-        bubbleMeteorsLeft -= 1;
 
         Destroy(bubble, 10);
     }
     bool CanSummonBubbleMeteor()
     {
-        if ((shotDelay < Time.realtimeSinceStartup) && (bubbleMeteorsLeft > 0))
+        if (meteorShotDelay < Time.realtimeSinceStartup)
         {
-            
-            shotDelay = Time.realtimeSinceStartup + bubbleMeteorFrequency;
+            meteorShotDelay = Time.realtimeSinceStartup + bubbleMeteorFrequency;
             return true;
         }
         else

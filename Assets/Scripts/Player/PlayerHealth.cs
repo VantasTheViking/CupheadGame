@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("Health of object (int)")]
     [SerializeField] private int _health;
 
-    [Tooltip("Layer to collide with (int")]
+    [Tooltip("Layer to collide with (int)")]
     [SerializeField] private int _layer;
 
     // Update is called once per frame
