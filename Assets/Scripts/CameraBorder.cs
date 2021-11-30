@@ -9,7 +9,7 @@ public class CameraBorder : MonoBehaviour
     [SerializeField] GameObject background;
 
     Vector3 bL;
-    Vector3 tR;
+    public Vector3 tR;
     Rect camRect;
 
     // Start is called before the first frame update
@@ -25,6 +25,9 @@ public class CameraBorder : MonoBehaviour
 
         background.transform.localScale = new Vector3(camRect.size.x, camRect.size.y, 1);
         background.transform.position = new Vector3(0, 0, 0);
+
+        GameObject.Find("TopSpawn").transform.position = new Vector3(tR.x, tR.y - 2, 0);
+        GameObject.Find("BottomSpawn").transform.position = new Vector3(tR.x, bL.y + 2, 0);
     }
 
 

@@ -14,13 +14,20 @@ public class EnemyPlaneSpawn : MonoBehaviour
     [Tooltip("Bottom of spawn range (GameObject)")]
     [SerializeField] private GameObject _bottom;
 
+    [Tooltip("Initial delay to spawn the plane")]
+    [SerializeField] private float _initialDelay;
+
     [Tooltip("Time between plane spawns (float)")]
     [SerializeField] private float _spawnDelay;
 
     [Tooltip("Speed of spawned plane (float)")]
     [SerializeField] public float _planeSpeed;
 
-    private float timeToNext = 0;
+    float timeToNext;
+    private void Start()
+    {
+        timeToNext = _initialDelay;
+    }
 
     // Update is called once per frame
     void Update()

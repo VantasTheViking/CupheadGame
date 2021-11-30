@@ -9,7 +9,7 @@ public class UFOFunction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialY = GameObject.Find("Main Camera").GetComponent<UFOSpawn>()._spawnPoint.transform.position.y;
+        initialY = GameObject.Find("Hilda").GetComponent<UFOSpawn>()._spawnPoint.transform.position.y;
         _trans = this.GetComponent<Transform>();
     }
 
