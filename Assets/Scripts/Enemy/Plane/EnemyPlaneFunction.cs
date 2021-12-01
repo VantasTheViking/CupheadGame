@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class EnemyPlaneFunction : MonoBehaviour
 
     private bool shot = false;
     private float _planeSpeed;
+    private float randomShootX;
 
     Transform _trans;
     Rigidbody2D _rigid;
@@ -27,14 +29,23 @@ public class EnemyPlaneFunction : MonoBehaviour
     {
         _trans = GetComponent<Transform>();
         _rigid = GetComponent<Rigidbody2D>();
-        _planeSpeed = Camera.main.GetComponent<EnemyPlaneSpawn>()._planeSpeed;
+        _planeSpeed = GameObject.Find("Hilda").GetComponent<EnemyPlaneSpawn>()._planeSpeed;
         _player = GameObject.Find("Player");
+        if (this.CompareTag("Green Enemy"))
+        {
+            randomShootX = ((float)Random.Range(-300, 600)) / 100;
+        }
+        else
+        {
+            randomShootX = ((float)Random.Range(0, 1100)) / 100;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
-    { 
-        if (_trans.position.x < 1.4f && !shot)
+    {
+        if (_trans.position.x < randomShootX && !shot)
         {
             _rigid.velocity = new Vector3(0, 0, 0);
             StartCoroutine(waitToShoot(1));
@@ -46,7 +57,7 @@ public class EnemyPlaneFunction : MonoBehaviour
             StartCoroutine(waitToMove(3));
         }
 
-        if(_trans.position.x > 13)
+        if (_trans.position.x > GameObject.Find("Main Camera").GetComponent<CameraBorder>().tR.x + 3)
         {
             Destroy(gameObject, 0);
         }
@@ -76,6 +87,7 @@ public class EnemyPlaneFunction : MonoBehaviour
             var Bullet = Instantiate(_bulletPrefab, _bulletSpawn.transform.position, Quaternion.Euler(new Vector3(0, 0, 90)));
 
             Vector3 velocity = _player.transform.position - _bulletSpawn.transform.position;
+            velocity = velocity.normalized;
             Bullet.GetComponent<Rigidbody2D>().velocity = velocity * _bulletSpeed;
             Destroy(Bullet, 5);
         }
@@ -109,18 +121,19 @@ public class EnemyPlaneFunction : MonoBehaviour
                         break;
                 }
 
-                
+
                 Bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
-                Vector3 velocity = Bullet.transform.right * 5;
+                Vector3 velocity = Bullet.transform.right;
 
                 Bullet.GetComponent<Rigidbody2D>().velocity = velocity * _bulletSpeed;
                 Destroy(Bullet, 5);
 
-                
+
             }
         }
         shot = true;
     }
 }
+

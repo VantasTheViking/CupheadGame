@@ -56,15 +56,20 @@ public class Phase2Attacks : MonoBehaviour
         {
             for(int i = 0; i <= meteorCount; i++)
             {
-                SummonBubbleMeteor();
+                StartCoroutine(waitForMeteor(((float)Random.Range(20, 150))/100));
             }
         }
 
     }
 
+    IEnumerator waitForMeteor(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SummonBubbleMeteor();
+    }
+
     void RotateAimer()
     {
-        
         aimerParent.transform.Rotate(Vector3.forward * Time.deltaTime * rateOfRotation);
     }
 

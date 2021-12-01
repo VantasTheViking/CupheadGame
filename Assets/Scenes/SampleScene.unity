@@ -246,9 +246,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
   - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
@@ -265,23 +262,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d12194586cce4549a7e5fde2e94d96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _planePrefab: {fileID: 6837555148578019749, guid: f4bebe9c4f6296344ad62d92921272f0, type: 3}
-  _top: {fileID: 2112641359}
-  _bottom: {fileID: 1342746459}
-  _spawnDelay: 8
-  _planeSpeed: 10
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -341,39 +321,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d12194586cce4549a7e5fde2e94d96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _planePrefab: {fileID: 6837555148578019749, guid: 10f6c8fdbb4ff904aad7645c2b19baed, type: 3}
-  _top: {fileID: 2112641359}
-  _bottom: {fileID: 1342746459}
-  _spawnDelay: 8
-  _planeSpeed: 10
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06e2c161c57e7a4f868f80f830c72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _UFOPrefab: {fileID: 2368574991778452775, guid: cc6c48b57a668db46a32447cfcd40333, type: 3}
-  _spawnPoint: {fileID: 2112641359}
-  _spawnDelay: 3
-  _UFOSpeed: 2
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +336,7 @@ MonoBehaviour:
   _playerPos: {fileID: 1493175396}
   _camera: {fileID: 519420031}
   background: {fileID: 1085023975}
+  tR: {x: 0, y: 0, z: 0}
 --- !u!1 &784040279
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +567,9 @@ GameObject:
   - component: {fileID: 1436150543}
   - component: {fileID: 1436150542}
   - component: {fileID: 1436150547}
+  - component: {fileID: 1436150550}
+  - component: {fileID: 1436150549}
+  - component: {fileID: 1436150548}
   m_Layer: 6
   m_Name: Hilda
   m_TagString: Untagged
@@ -667,10 +618,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimerChild: {fileID: 186093327}
   aimerParent: {fileID: 1545638384}
-  rateOfRotation: 35
+  rateOfRotation: 45
   waveOfBullets_RateOfFire: 0.2
   waterBulletPrefab: {fileID: 120390567460456021, guid: 7d039a898d538df4aac133afd2dbd10a, type: 3}
-  waterBulletSpeed: 2
+  waterBulletSpeed: 4
   bubbleMeteorFrequency: 6
   meteorCount: 3
   bubbleMeteorPrefab: {fileID: 1334318672237895126, guid: 89589cfd9a49dbd43b8cbb72976c702e, type: 3}
@@ -769,6 +720,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1436150548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436150541}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06e2c161c57e7a4f868f80f830c72d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _UFOPrefab: {fileID: 2368574991778452775, guid: cc6c48b57a668db46a32447cfcd40333, type: 3}
+  _spawnPoint: {fileID: 2112641359}
+  _spawnDelay: 3
+  _UFOSpeed: 2
+--- !u!114 &1436150549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436150541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d12194586cce4549a7e5fde2e94d96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planePrefab: {fileID: 6837555148578019749, guid: 10f6c8fdbb4ff904aad7645c2b19baed, type: 3}
+  _top: {fileID: 2112641359}
+  _bottom: {fileID: 1342746459}
+  _initialDelay: 10
+  _spawnDelay: 8
+  _planeSpeed: 10
+--- !u!114 &1436150550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436150541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d12194586cce4549a7e5fde2e94d96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planePrefab: {fileID: 6837555148578019749, guid: f4bebe9c4f6296344ad62d92921272f0, type: 3}
+  _top: {fileID: 2112641359}
+  _bottom: {fileID: 1342746459}
+  _initialDelay: 15
+  _spawnDelay: 10
+  _planeSpeed: 10
 --- !u!1 &1493175391
 GameObject:
   m_ObjectHideFlags: 0

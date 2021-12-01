@@ -26,7 +26,7 @@ public class UFOFunction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialY = GameObject.Find("Main Camera").GetComponent<UFOSpawn>()._spawnPoint.transform.position.y;
+        initialY = GameObject.Find("Hilda").GetComponent<UFOSpawn>()._spawnPoint.transform.position.y;
         initialTime = Time.realtimeSinceStartup;
         _trans = GetComponent<Transform>();
     }
@@ -47,6 +47,8 @@ public class UFOFunction : MonoBehaviour
         {
             Destroy(laser, 0);
         }
+
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialY + Mathf.Sin(Time.realtimeSinceStartup * 6) / 4, gameObject.transform.position.z);
     }
 
     IEnumerator waitToShoot(int seconds)

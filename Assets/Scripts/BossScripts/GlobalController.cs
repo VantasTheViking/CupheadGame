@@ -8,7 +8,7 @@ public class GlobalController : MonoBehaviour
     [Tooltip("The fraction of max health/x to change phase (float)")]
     [SerializeField] private float _phaseDivider;
 
-    GameObject cameraObject;
+    GameObject hildaObject;
 
     int _health;
     int maxHealth;
@@ -23,7 +23,7 @@ public class GlobalController : MonoBehaviour
         maxHealth = GetComponent<BossHealth>().getHealth();
         //Debug.Log(maxHealth);
 
-        cameraObject = GameObject.Find("Main Camera");
+        hildaObject = GameObject.Find("Hilda");
     }
 
     // Update is called once per frame
@@ -55,9 +55,9 @@ public class GlobalController : MonoBehaviour
     {
         phase1 = false;
         //since we used multiple components I think this is necessary
-        for(int i = 0; i < cameraObject.GetComponents<EnemyPlaneSpawn>().Length; i++)
+        for(int i = 0; i < hildaObject.GetComponents<EnemyPlaneSpawn>().Length; i++)
         {
-            cameraObject.GetComponents<EnemyPlaneSpawn>()[i].enabled = false;
+            hildaObject.GetComponents<EnemyPlaneSpawn>()[i].enabled = false;
         }
 
         //remove comment once Phase1Attacks is made
@@ -81,7 +81,7 @@ public class GlobalController : MonoBehaviour
     void startPhase3()
     {
         phase3 = true;
-        cameraObject.GetComponent<UFOSpawn>().enabled = true;
+        hildaObject.GetComponent<UFOSpawn>().enabled = true;
 
         //remove comment once Phase1Attacks is made
         //gameObject.GetComponent<Phase3Attacks>().enabled = true;

@@ -9,7 +9,7 @@ public class CameraBorder : MonoBehaviour
     [SerializeField] GameObject background;
 
     Vector3 bL;
-    Vector3 tR;
+    public Vector3 tR;
     Rect camRect;
 
     // Start is called before the first frame update
