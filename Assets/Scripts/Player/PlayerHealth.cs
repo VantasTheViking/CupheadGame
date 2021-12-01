@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(_health <= 0)
         {
-            Destroy(gameObject, 0);
+            this.GetComponent<Renderer>().enabled = false;
         }
     }
 

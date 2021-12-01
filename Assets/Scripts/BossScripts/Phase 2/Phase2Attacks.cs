@@ -91,7 +91,7 @@ public class Phase2Attacks : MonoBehaviour
         var bullet = Instantiate(waterBulletPrefab, transform.position, aimerParent.transform.rotation);
         bullet.transform.Rotate(Vector3.forward * 90);
 
-        bullet.GetComponent<Rigidbody2D>().velocity = (aimerChild.transform.position - transform.position).normalized * waterBulletSpeed;
+        bullet.GetComponent<Rigidbody2D>().velocity = GameObject.Find("Aimer").transform.right * waterBulletSpeed * -1;
 
         Destroy(bullet, 7);
     }
