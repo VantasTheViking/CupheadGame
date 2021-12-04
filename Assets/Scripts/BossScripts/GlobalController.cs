@@ -54,6 +54,8 @@ public class GlobalController : MonoBehaviour
     void endPhase1()
     {
         phase1 = false;
+        gameObject.GetComponent<Phase1Attacks>().enabled = false;
+
         //since we used multiple components I think this is necessary
         for(int i = 0; i < hildaObject.GetComponents<EnemyPlaneSpawn>().Length; i++)
         {
@@ -64,12 +66,7 @@ public class GlobalController : MonoBehaviour
         //gameObject.GetComponent<Phase1Attacks>().enabled = false;
     }
 
-    void endPhase2()
-    {
-        phase2 = false;
-
-        gameObject.GetComponent<Phase2Attacks>().enabled = false;
-    }
+    
 
     void startPhase2()
     {
@@ -78,9 +75,17 @@ public class GlobalController : MonoBehaviour
         gameObject.GetComponent<Phase2Attacks>().enabled = true;
     }
 
+    void endPhase2()
+    {
+        phase2 = false;
+
+        gameObject.GetComponent<Phase2Attacks>().enabled = false;
+    }
+
     void startPhase3()
     {
         phase3 = true;
+        gameObject.GetComponent<Phase3Attacks>().enabled = true;
         hildaObject.GetComponent<UFOSpawn>().enabled = true;
 
         //remove comment once Phase1Attacks is made

@@ -8,7 +8,7 @@ public class CameraBorder : MonoBehaviour
     [SerializeField] Camera _camera;
     [SerializeField] GameObject background;
 
-    Vector3 bL;
+    public Vector3 bL;
     public Vector3 tR;
     Rect camRect;
 
