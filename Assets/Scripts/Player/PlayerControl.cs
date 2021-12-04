@@ -14,6 +14,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootDelay;
 
+    bool isColliding;
     float timeToNextShot = 0;
 
     // Start is called before the first frame update
@@ -39,7 +40,7 @@ public class PlayerControl : MonoBehaviour
 
     void ShootBullet()
     {
-        var bullet = Instantiate(bulletPrefab, bulletSpawn.position + new Vector3(0, Random.Range(-20, 20) / 100, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
+        var bullet = Instantiate(bulletPrefab, bulletSpawn.position + new Vector3(0, (float)Random.Range(-20, 20) / 100, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
 
         bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         bullet.layer = 3;
@@ -87,6 +88,11 @@ public class PlayerControl : MonoBehaviour
 
         AssignInput(inputs);
 
+        if (inputs.Count == 0 && body.velocity.magnitude > 0 && !isColliding)
+        {
+            body.velocity = Vector2.zero;
+        }
+
         inputs.Clear();
     }
 
@@ -125,5 +131,15 @@ public class PlayerControl : MonoBehaviour
                 trans.position += -transform.up * Time.deltaTime * moveSpeed / divider;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isColliding = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isColliding = false;
     }
 }
