@@ -16,9 +16,10 @@ public class EnemyPlaneFunction : MonoBehaviour
     [SerializeField] private float _bulletSpeed;
 
 
-    private bool shot = false;
-    private float _planeSpeed;
-    private float randomShootX;
+    bool shot;
+    float _planeSpeed;
+    float randomShootX;
+    bool shooting;
 
     Transform _trans;
     Rigidbody2D _rigid;
@@ -54,7 +55,7 @@ public class EnemyPlaneFunction : MonoBehaviour
 
         if (shot)
         {
-            StartCoroutine(waitToMove(3));
+            StartCoroutine(waitToMove(2.5f));
         }
 
         if (_trans.position.x > GameObject.Find("Main Camera").GetComponent<CameraBorder>().tR.x + 3)
@@ -63,20 +64,22 @@ public class EnemyPlaneFunction : MonoBehaviour
         }
     }
 
-    IEnumerator waitToMove(int seconds)
+    IEnumerator waitToMove(float seconds)
     {
         yield return new WaitForSeconds(seconds);
 
-        _trans.rotation = Quaternion.Euler(0, 180, 90);
-        _rigid.velocity = transform.up * _planeSpeed;
+        _trans.rotation = Quaternion.Euler(0, 180, 0);
+        _rigid.velocity = -transform.right * _planeSpeed;
+        shooting = false;
     }
 
-    IEnumerator waitToShoot(int seconds)
+    IEnumerator waitToShoot(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         if (!shot)
         {
             shoot();
+            shooting = true;
         }
     }
 
@@ -134,6 +137,11 @@ public class EnemyPlaneFunction : MonoBehaviour
             }
         }
         shot = true;
+    }
+
+    public bool GetIsShooting()
+    {
+        return shooting;
     }
 }
 

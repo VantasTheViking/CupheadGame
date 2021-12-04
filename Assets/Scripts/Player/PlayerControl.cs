@@ -17,6 +17,9 @@ public class PlayerControl : MonoBehaviour
     bool isColliding;
     float timeToNextShot = 0;
 
+    bool movingUp;
+    bool movingDown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +45,7 @@ public class PlayerControl : MonoBehaviour
     {
         var bullet = Instantiate(bulletPrefab, bulletSpawn.position + new Vector3(0, (float)Random.Range(-20, 20) / 100, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
 
-        bullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+        bullet.GetComponent<Rigidbody2D>().velocity = transform.right * bulletSpeed;
         bullet.layer = 3;
 
         Destroy(bullet, 5);
@@ -69,11 +72,13 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             inputs.Add("w");
+            movingUp = true;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             inputs.Add("s");
+            movingDown = true;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -84,6 +89,22 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             inputs.Add("a");
+        }
+
+        if (movingDown && movingUp)
+        {
+            movingUp = false;
+            movingDown = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            movingUp = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            movingDown = false;
         }
 
         AssignInput(inputs);
@@ -116,19 +137,19 @@ public class PlayerControl : MonoBehaviour
         {
             if (inputs[x] == "w")
             {
-                trans.position += -transform.right * Time.deltaTime * moveSpeed / divider;
+                trans.position += transform.up * Time.deltaTime * moveSpeed / divider;
             }
             else if (inputs[x] == "s")
             {
-                trans.position += transform.right * Time.deltaTime * moveSpeed / divider;
+                trans.position += -transform.up * Time.deltaTime * moveSpeed / divider;
             }
             else if (inputs[x] == "d")
             {
-                trans.position += transform.up * Time.deltaTime * moveSpeed / divider;
+                trans.position += transform.right * Time.deltaTime * moveSpeed / divider;
             }
             else if (inputs[x] == "a")
             {
-                trans.position += -transform.up * Time.deltaTime * moveSpeed / divider;
+                trans.position += -transform.right * Time.deltaTime * moveSpeed / divider;
             }
         }
     }
@@ -141,5 +162,15 @@ public class PlayerControl : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isColliding = false;
+    }
+
+    public bool GetIsMovingUp()
+    {
+        return movingUp;
+    }
+
+    public bool GetIsMovingDown()
+    {
+        return movingDown;
     }
 }

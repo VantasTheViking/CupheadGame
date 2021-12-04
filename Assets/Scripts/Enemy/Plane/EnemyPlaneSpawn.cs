@@ -44,7 +44,7 @@ public class EnemyPlaneSpawn : MonoBehaviour
         float y = Random.Range(_bottom.transform.position.y, _top.transform.position.y);
         //Debug.Log($"{x}, {y}, 0");
 
-        var Plane = Instantiate(_planePrefab, new Vector3(x, y, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
+        var Plane = Instantiate(_planePrefab, new Vector3(x, y, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         Plane.GetComponent<Rigidbody2D>().velocity = -transform.right * _planeSpeed;
 
         //Destroy(Plane, 8);
