@@ -61,9 +61,6 @@ public class GlobalController : MonoBehaviour
         {
             hildaObject.GetComponents<EnemyPlaneSpawn>()[i].enabled = false;
         }
-
-        //remove comment once Phase1Attacks is made
-        //gameObject.GetComponent<Phase1Attacks>().enabled = false;
     }
 
     
@@ -85,10 +82,8 @@ public class GlobalController : MonoBehaviour
     void startPhase3()
     {
         phase3 = true;
+
         gameObject.GetComponent<Phase3Attacks>().enabled = true;
         hildaObject.GetComponent<UFOSpawn>().enabled = true;
-
-        //remove comment once Phase1Attacks is made
-        //gameObject.GetComponent<Phase3Attacks>().enabled = true;
     }
 }

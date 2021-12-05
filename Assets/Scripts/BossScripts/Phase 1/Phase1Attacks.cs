@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class Phase1Attacks : MonoBehaviour
 {
+    [Tooltip("Star prefab (GameObject)")]
     [SerializeField] GameObject laughPrefab;
+
+    [Tooltip("Speed of the laugh (float)")]
     [SerializeField] float laughSpeed;
-    //hundred = second
+
+    [Tooltip("Time between firing a laugh in x/100 seconds (float)")]
     [SerializeField] int minLaughRateOfFire;
+
+    [Tooltip("Time between firing a laugh in x/100 seconds (float)")]
     [SerializeField] int maxLaughRateOfFire;
 
+    [Tooltip("Star prefab (GameObject)")]
     [SerializeField] GameObject tornadoPrefab;
+
+    [Tooltip("Speed of the laugh (float)")]
     [SerializeField] float tornadoSpeed;
-    //hundred = second
+
+    [Tooltip("Time between firing a tornado in x/100 seconds (float)")]
     [SerializeField] int minTornadoRateOfFire;
+
+    [Tooltip("Time between firing a tornado in x/100 seconds (float)")]
     [SerializeField] int maxTornadoRateOfFire;
 
-    [SerializeField] GameObject player;
     float laughDelay = 1;
     float tornadoDelay = 4;
     // Start is called before the first frame update
@@ -73,7 +84,7 @@ public class Phase1Attacks : MonoBehaviour
     {
         var laugh = Instantiate(laughPrefab, transform.position, Quaternion.Euler(0, 0, 0));
 
-        laugh.GetComponent<Rigidbody2D>().velocity = transform.right * laughSpeed * -1;
+        laugh.GetComponent<Rigidbody2D>().velocity = -transform.right * laughSpeed;
 
         Destroy(laugh, 12);
     }
@@ -82,7 +93,7 @@ public class Phase1Attacks : MonoBehaviour
     {
         var tornado = Instantiate(tornadoPrefab, transform.position, Quaternion.Euler(0, 0, 0));
 
-        tornado.GetComponent<Rigidbody2D>().velocity = (player.transform.position - transform.position).normalized * laughSpeed;
+        tornado.GetComponent<Rigidbody2D>().velocity = (GameObject.Find("Player").transform.position - transform.position).normalized * tornadoSpeed;
 
         Destroy(tornado, 12);
     }
