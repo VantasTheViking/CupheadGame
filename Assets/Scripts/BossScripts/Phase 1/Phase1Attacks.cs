@@ -19,12 +19,10 @@ public class Phase1Attacks : MonoBehaviour
     [SerializeField] GameObject player;
     float laughDelay = 1;
     float tornadoDelay = 4;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+    bool isLaughing;
+    bool shotTornado;
+    
     // Update is called once per frame
     void Update()
     {
@@ -85,5 +83,25 @@ public class Phase1Attacks : MonoBehaviour
         tornado.GetComponent<Rigidbody2D>().velocity = (player.transform.position - transform.position).normalized * laughSpeed;
 
         Destroy(tornado, 12);
+
+        shotTornado = true;
+        StartCoroutine(WaitForTornado(1f));
+        Invoke("Tornado", 1);
+    }
+
+    public IEnumerator WaitForTornado(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        shotTornado = false;
+    }
+
+    void Tornado()
+    {
+        shotTornado = false;
+    }
+
+    public bool GetIsTornado()
+    {
+        return shotTornado;
     }
 }

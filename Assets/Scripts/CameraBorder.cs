@@ -37,6 +37,7 @@ public class CameraBorder : MonoBehaviour
 
         GameObject.Find("MeteorSpawn1").transform.position = new Vector3(bL.x + 5, tR.y + 1, 0);
         GameObject.Find("MeteorSpawn2").transform.position = new Vector3(tR.x - 4, tR.y + 1, 0);
+        
     }
 
 

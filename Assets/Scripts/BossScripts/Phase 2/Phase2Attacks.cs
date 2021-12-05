@@ -206,5 +206,10 @@ public class Phase2Attacks : MonoBehaviour
             return false;
         }
     }
+
+    public bool GetIsSpiral()
+    {
+        return bubbleActivated;
+    }
 }
 
