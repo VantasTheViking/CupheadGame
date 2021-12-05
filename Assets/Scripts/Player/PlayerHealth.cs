@@ -11,6 +11,19 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("Layer to collide with (int)")]
     [SerializeField] private int _layer;
 
+    
+
+    private int card1;
+
+    private int card2;
+
+    private int card3;
+
+    private int card4;
+
+    private int card5;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -38,8 +51,77 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public int GetHealth()
+    public void ChargeCardGauge()
     {
-        return _health;
+        if (card1 < 50)
+        {
+            card1 += 1;
+        } else if (card2 < 50){
+            card2 += 1;
+        }
+        else if (card3 < 50)
+        {
+            card3 += 1;
+        }
+        else if (card4 < 50)
+        {
+            card4 += 1;
+        }
+        else if (card5 < 50)
+        {
+            card5 += 1;
+        }
+
+    }
+
+    public bool GetCardsFull()
+    {
+        if (card1 == 50 && card2 == 50 && card3 == 50 && card4 == 50 && card5 == 50)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ResetCards()
+    {
+        card1 = 0;
+        card2 = 0;
+        card3 = 0;
+        card4 = 0;
+        card5 = 0;
+    }
+
+
+
+    public int GetCardGauge(int card)
+    {
+        switch (card)
+        {
+
+            case 1:
+                return card1;
+                break;
+            case 2:
+                return card2;
+                break;
+            case 3:
+                return card3;
+                break;
+            case 4:
+                return card4;
+                break;
+            case 5:
+                return card5;
+                break;
+            default:
+                return 0;
+                break;
+
+        }
+        
     }
 }

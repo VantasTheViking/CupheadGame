@@ -55,6 +55,7 @@ public class Phase2Attacks : MonoBehaviour
     bool bubbleActivated = true;
     bool fireSupportActivated = true;
 
+    
 
     int randomNumber;
 
@@ -63,10 +64,12 @@ public class Phase2Attacks : MonoBehaviour
 
         //First number is for initial delay. Second number is for recurring delay.
         InvokeRepeating("RandomEvent", 4, 8);
+        
     }
     // Update is called once per frame
     void Update()
     {
+        
         RotateAimer();
 
         if (waveOfBullets_CanShoot())
