@@ -5,7 +5,6 @@ using UnityEngine;
 public class Phase3Attacks : MonoBehaviour
 {
     [SerializeField] GameObject starPrefab;
-    [SerializeField] GameObject starSpawn;
     [SerializeField] float starSpeed;
     //hundred = second
     [SerializeField] int minStarRateOfFire;
@@ -30,7 +29,8 @@ public class Phase3Attacks : MonoBehaviour
 
     void SummonStars()
     {
-        var star = Instantiate(starPrefab, starSpawn.transform.position, Quaternion.Euler(0, 0, 0));
+        Vector3 starSpawn = new Vector3(GameObject.Find("TopSpawn").transform.position.x, Random.Range(GameObject.Find("BottomSpawn").transform.position.y, GameObject.Find("TopSpawn").transform.position.y), 0);
+        var star = Instantiate(starPrefab, starSpawn, Quaternion.Euler(0, 0, 0));
 
         star.GetComponent<Rigidbody2D>().velocity = transform.right * starSpeed * -1;
 
