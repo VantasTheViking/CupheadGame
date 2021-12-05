@@ -37,4 +37,9 @@ public class PlayerHealth : MonoBehaviour
             takeDamage(1);
         }
     }
+
+    public int GetHealth()
+    {
+        return _health;
+    }
 }

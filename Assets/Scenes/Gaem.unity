@@ -916,8 +916,8 @@ MonoBehaviour:
   moveSpeed: 7
   bulletPrefab: {fileID: 3781512902453268538, guid: b9528046b6ccf1544aed080710dfad38, type: 3}
   bulletSpawn: {fileID: 1162788808}
-  bulletSpeed: 10
-  shootDelay: 0.1
+  bulletSpeed: 15
+  shootDelay: 0.11
 --- !u!212 &1493175395
 SpriteRenderer:
   m_ObjectHideFlags: 0
