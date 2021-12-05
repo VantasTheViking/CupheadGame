@@ -13,12 +13,13 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Transform bulletSpawn;
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootDelay;
-
+    
     bool isColliding;
     float timeToNextShot = 0;
 
     bool movingUp;
     bool movingDown;
+
 
     // Start is called before the first frame update
     void Start()
