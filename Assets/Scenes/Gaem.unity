@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &115942785
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +206,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+>>>>>>> 04b0155f1f9d97654349885d42ed1043846d1d32
 --- !u!1 &186093327
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,10 +717,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1311694354}
   - component: {fileID: 1311694353}
   m_Layer: 0
   m_Name: f
+=======
+  - component: {fileID: 1436150546}
+  - component: {fileID: 1436150545}
+  - component: {fileID: 1436150544}
+  - component: {fileID: 1436150543}
+  - component: {fileID: 1436150542}
+  - component: {fileID: 1436150547}
+  - component: {fileID: 1436150550}
+  - component: {fileID: 1436150549}
+  - component: {fileID: 1436150548}
+  - component: {fileID: 1436150551}
+  - component: {fileID: 1436150552}
+  m_Layer: 6
+  m_Name: Hilda
+>>>>>>> 04b0155f1f9d97654349885d42ed1043846d1d32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laughPrefab: {fileID: 2353737853746213490, guid: e247ea07e5f56e0448aafe7159e57094, type: 3}
+<<<<<<< HEAD
   laughSpeed: 8
   minLaughRateOfFire: 300
   maxLaughRateOfFire: 400
@@ -1123,6 +1143,15 @@ MonoBehaviour:
   minTornadoRateOfFire: 300
   maxTornadoRateOfFire: 600
   player: {fileID: 1493175391}
+=======
+  laughSpeed: 2
+  minLaughRateOfFire: 1500
+  maxLaughRateOfFire: 2000
+  tornadoPrefab: {fileID: 7591430774985560367, guid: c8babd925a301a543938dfb8406999df, type: 3}
+  tornadoSpeed: 3
+  minTornadoRateOfFire: 700
+  maxTornadoRateOfFire: 1200
+>>>>>>> 04b0155f1f9d97654349885d42ed1043846d1d32
 --- !u!114 &1436150552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,10 +1165,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 3427831825736573458, guid: 71d837550d98dd641a1b7a9e4ae0ff51, type: 3}
+<<<<<<< HEAD
   starSpawn: {fileID: 1311694352}
   starSpeed: 12
   minStarRateOfFire: 150
   maxStarRateOfFire: 200
+=======
+  starSpeed: 3
+  minStarRateOfFire: 325
+  maxStarRateOfFire: 650
+>>>>>>> 04b0155f1f9d97654349885d42ed1043846d1d32
 --- !u!1 &1493175391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1210,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1419,7 +1454,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 186093328}
-  - {fileID: 115942786}
   m_Father: {fileID: 1436150546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
