@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     void takeDamage(int damage)
     {
-        if (gameObject.GetComponent<PlayerControl>().invincible)
+        if (!gameObject.GetComponent<PlayerControl>().invincible)
         {
             _health -= damage;
         }

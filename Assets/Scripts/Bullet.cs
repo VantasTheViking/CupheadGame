@@ -18,11 +18,11 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.layer == _layer)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
             player.gameObject.GetComponent<PlayerHealth>().ChargeCardGauge();
             if (collision.gameObject.tag.Equals("Purple Enemy") || collision.gameObject.tag.Equals("Green Enemy"))
             {
-                Destroy(collision.gameObject, 0);
+                collision.gameObject.GetComponent<EnemyPlane>().takeDamage(1);
                 player.gameObject.GetComponent<PlayerHealth>().ChargeCardGauge();
             }
                

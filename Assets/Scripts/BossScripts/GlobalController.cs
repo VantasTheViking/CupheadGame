@@ -108,7 +108,7 @@ public class GlobalController : MonoBehaviour
         gameObject.GetComponents<PolygonCollider2D>()[1].enabled = false;
         gameObject.GetComponents<PolygonCollider2D>()[2].enabled = true;
 
-        gameObject.transform.position = new Vector3(3, 0, 1);
+        gameObject.transform.position = new Vector3(3, 0, 0);
         gameObject.transform.localScale = new Vector3(3, 3, 1);
     }
 

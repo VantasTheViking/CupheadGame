@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: -6999560862286959652}
   - component: {fileID: -5639005709120949736}
   - component: {fileID: -5271691069578762731}
+  - component: {fileID: 3570867103366057111}
   m_Layer: 6
   m_Name: Purple Enemy
   m_TagString: Purple Enemy
@@ -251,3 +252,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb8f6e58e757094b8db351aec7c8c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3570867103366057111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837555148578019749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820a68dc05fb0e047a4ce2d541babfc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
