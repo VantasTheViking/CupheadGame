@@ -13,10 +13,15 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Transform bulletSpawn;
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootDelay;
+
+    [SerializeField] GameObject rocketPrefab;
+
+    [SerializeField] float missileSpeed;
     
     bool isColliding;
     float timeToNextShot = 0;
 
+    bool rocket;
     bool movingUp;
     bool movingDown;
 
@@ -40,6 +45,16 @@ public class PlayerControl : MonoBehaviour
         {
             ShootBullet();
         }
+
+        if (Input.GetKey(KeyCode.N) && GetComponent<PlayerHealth>().GetCardsFull())
+        {
+            GetComponent<PlayerHealth>().ResetCards();
+        }
+
+        if (Input.GetKey(KeyCode.N) && canMissile())
+        {
+            ShootMissile();
+        }
     }
 
     void ShootBullet()
@@ -54,7 +69,7 @@ public class PlayerControl : MonoBehaviour
 
     bool CanShoot()
     {
-        if (timeToNextShot < Time.realtimeSinceStartup)
+        if (timeToNextShot < Time.realtimeSinceStartup && !rocket)
         {
             timeToNextShot = Time.realtimeSinceStartup + shootDelay;
             return true;
@@ -64,6 +79,38 @@ public class PlayerControl : MonoBehaviour
         {
             return false;
         }
+    }
+
+    void ShootMissile()
+    {
+        var Missile = Instantiate(rocketPrefab, bulletSpawn.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        Missile.GetComponent<Rigidbody2D>().velocity = transform.right * missileSpeed;
+
+        Destroy(Missile, 4);
+    }
+
+    bool canMissile()
+    {
+        Debug.Log("check1");
+        for(int i = 0; i < 5; i++)
+        {
+            Debug.Log($"check2 {i}");
+            if (GetComponent<PlayerHealth>().GetCardGauge(5 - i) >= 50)
+            {
+                Debug.Log("check3");
+                GetComponent<PlayerHealth>().resetCardGauge(5 - i);
+
+                for(int v = 0; v < 5; v++)
+                {
+                    if(GetComponent<PlayerHealth>().GetCardGauge(5 - v) <= 50)
+                    {
+                        //GetComponent<PlayerHealth>().setCardGauge(5 - v, GetComponent<PlayerHealth>().GetCardGauge(5 - v));
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
     void Move()

@@ -95,33 +95,70 @@ public class PlayerHealth : MonoBehaviour
         card5 = 0;
     }
 
+    public void resetCardGauge(int card)
+    {
+        switch (card)
+        {
+            case 1:
+                card1 = 0;
+                break;
+            case 2:
+                card2 = 0;
+                break;
+            case 3:
+                card3 = 0;
+                break;
+            case 4:
+                card4 = 0;
+                break;
+            case 5:
+                card5 = 0;
+                break;
+            default:
+                break;
+        }
+    }
 
+    public void setCardGauge(int card, int value)
+    {
+        switch (card)
+        {
+            case 1:
+                card1 += value;
+                break;
+            case 2:
+                card2 += value;
+                break;
+            case 3:
+                card3 += value;
+                break;
+            case 4:
+                card4 += value;
+                break;
+            case 5:
+                card5 += value;
+                break;
+            default:
+                break;
+        }
+    }
 
     public int GetCardGauge(int card)
     {
         switch (card)
         {
-
             case 1:
                 return card1;
-                break;
             case 2:
                 return card2;
-                break;
             case 3:
                 return card3;
-                break;
             case 4:
                 return card4;
-                break;
             case 5:
                 return card5;
-                break;
             default:
                 return 0;
-                break;
-
         }
-        
     }
 }

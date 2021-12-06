@@ -2087,6 +2087,8 @@ MonoBehaviour:
   bulletSpawn: {fileID: 1162788808}
   bulletSpeed: 15
   shootDelay: 0.11
+  rocketPrefab: {fileID: 979509930147469225, guid: f7e6e91702d809f47a549afd717e2c91, type: 3}
+  missileSpeed: 20
 --- !u!212 &1493175395
 SpriteRenderer:
   m_ObjectHideFlags: 0
