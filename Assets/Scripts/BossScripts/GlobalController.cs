@@ -42,6 +42,9 @@ public class GlobalController : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("Dead", true);
             GameObject.Find("Player").GetComponent<PolygonCollider2D>().enabled = false;
+
+            gameObject.GetComponent<UFOSpawn>().enabled = false;
+            gameObject.GetComponent<Phase3Attacks>().enabled = false;
         }
 
         if (maxHealth - (maxHealth / _phaseDivider) >= _health && (!phase2 || !phase3))

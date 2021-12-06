@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour
     public bool rocket;
     bool movingUp;
     bool movingDown;
+    public bool invincible;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +86,10 @@ public class PlayerControl : MonoBehaviour
         becomeRocket();
         yield return new WaitForSeconds(seconds);
 
+        invincible = true;
+
+        InvincibleTime(5);
+
         //Debug.Log("Test4");
         if(Vector3.Distance(GameObject.Find("Hilda").transform.position, trans.position) < 3)
         {
@@ -96,10 +101,16 @@ public class PlayerControl : MonoBehaviour
         GetComponent<Animator>().enabled = true;
     }
 
+    IEnumerator InvincibleTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        invincible = false;
+    }
+
     bool CanShoot(bool Override)
     {
-        if (!Override)
-        {
+
+        
             if (timeToNextShot < Time.realtimeSinceStartup && !rocket)
             {
                 timeToNextShot = Time.realtimeSinceStartup + shootDelay;
@@ -110,11 +121,7 @@ public class PlayerControl : MonoBehaviour
             {
                 return false;
             }
-        }
-        else
-        {
-            return false;
-        }
+        
     }
 
     void ShootMissile()

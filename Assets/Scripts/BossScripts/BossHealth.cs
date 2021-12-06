@@ -15,8 +15,15 @@ public class BossHealth : MonoBehaviour
         if(collision.gameObject.layer == _layer)
         {
             Destroy(collision.gameObject, 0);
-
-            takeDamage(1);
+            if (collision.gameObject.CompareTag("Rocket"))
+            {
+                takeDamage(15);
+            }
+            else
+            {
+                takeDamage(1);
+            }
+            
         }
     }
 

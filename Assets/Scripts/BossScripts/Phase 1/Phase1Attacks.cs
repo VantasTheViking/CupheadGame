@@ -89,7 +89,7 @@ public class Phase1Attacks : MonoBehaviour
         Destroy(tornado, 12);
 
         shotTornado = true;
-        StartCoroutine(WaitForTornado(2f));
+        StartCoroutine(WaitForTornado(1f));
     }
 
     public IEnumerator WaitForTornado(float seconds)

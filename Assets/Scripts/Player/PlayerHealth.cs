@@ -35,7 +35,10 @@ public class PlayerHealth : MonoBehaviour
 
     void takeDamage(int damage)
     {
-        _health -= damage;
+        if (gameObject.GetComponent<PlayerControl>().invincible)
+        {
+            _health -= damage;
+        }
     }
 
     public int getHealth()

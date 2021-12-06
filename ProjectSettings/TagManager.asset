@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Green Enemy
   - Purple Enemy
+  - Rocket
   layers:
   - Default
   - TransparentFX
