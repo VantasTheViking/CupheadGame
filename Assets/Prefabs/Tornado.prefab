@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7466860604042730986}
   - component: {fileID: -6074438906938929202}
   - component: {fileID: 5343872911192457752}
+  - component: {fileID: 7502082609582528883}
   m_Layer: 8
   m_Name: Tornado
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7591430774985560367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5864, y: 2.9876, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -322,3 +323,22 @@ PolygonCollider2D:
       - {x: -0.39, y: -4.2999997}
       - {x: -0.31, y: -4.24}
       - {x: -0.14, y: -4.25}
+--- !u!95 &7502082609582528883
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7591430774985560367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 697d4612097279d418de1a38b89f125e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

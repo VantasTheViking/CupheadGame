@@ -39,6 +39,8 @@ public class Phase1Attacks : MonoBehaviour
     {
         int randomRateofFire = Random.Range(minLaughRateOfFire, maxLaughRateOfFire);
 
+        isLaughing = false;
+
         if (laughDelay < Time.realtimeSinceStartup)
         {
             //Debug.Log(waterBulletsLeft);
@@ -73,6 +75,8 @@ public class Phase1Attacks : MonoBehaviour
 
         laugh.GetComponent<Rigidbody2D>().velocity = transform.right * laughSpeed * -1;
 
+        isLaughing = true;
+
         Destroy(laugh, 12);
     }
 
@@ -85,8 +89,7 @@ public class Phase1Attacks : MonoBehaviour
         Destroy(tornado, 12);
 
         shotTornado = true;
-        StartCoroutine(WaitForTornado(1f));
-        Invoke("Tornado", 1);
+        StartCoroutine(WaitForTornado(2f));
     }
 
     public IEnumerator WaitForTornado(float seconds)
@@ -103,5 +106,10 @@ public class Phase1Attacks : MonoBehaviour
     public bool GetIsTornado()
     {
         return shotTornado;
+    }
+
+    public bool GetIsLaughing()
+    {
+        return isLaughing;
     }
 }

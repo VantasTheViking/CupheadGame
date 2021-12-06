@@ -25,10 +25,9 @@ public class PlayerControl : MonoBehaviour
     bool isColliding;
     float timeToNextShot = 0;
 
-    bool rocket;
+    public bool rocket;
     bool movingUp;
     bool movingDown;
-
 
     // Start is called before the first frame update
     void Start()
@@ -44,12 +43,10 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N) && GetComponent<PlayerHealth>().GetCardsFull())
         {
-            //Debug.Log("test1");
-
             StartCoroutine(rocketWait(5));
         }
 
-        if (Input.GetKeyDown(KeyCode.N) && canMissile())
+        if (Input.GetKeyDown(KeyCode.M) && canMissile())
         {
             ShootMissile();
         }
@@ -57,7 +54,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) && CanShoot())
+        if (Input.GetKey(KeyCode.Space) && CanShoot(rocket))
         {
             ShootBullet();
         }
@@ -89,9 +86,9 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         //Debug.Log("Test4");
-        if(Vector3.Distance(GameObject.Find("Hilda").transform.position, trans.position) < 5)
+        if(Vector3.Distance(GameObject.Find("Hilda").transform.position, trans.position) < 3)
         {
-            GameObject.Find("Hilda").GetComponent<BossHealth>().takeDamage(20);
+            GameObject.Find("Hilda").GetComponent<BossHealth>().takeDamage(50);
         }
 
         rocket = false;
@@ -99,14 +96,21 @@ public class PlayerControl : MonoBehaviour
         GetComponent<Animator>().enabled = true;
     }
 
-    bool CanShoot()
+    bool CanShoot(bool Override)
     {
-        if (timeToNextShot < Time.realtimeSinceStartup && !rocket)
+        if (!Override)
         {
-            timeToNextShot = Time.realtimeSinceStartup + shootDelay;
-            return true;
-        }
+            if (timeToNextShot < Time.realtimeSinceStartup && !rocket)
+            {
+                timeToNextShot = Time.realtimeSinceStartup + shootDelay;
+                return true;
+            }
 
+            else
+            {
+                return false;
+            }
+        }
         else
         {
             return false;
@@ -117,6 +121,7 @@ public class PlayerControl : MonoBehaviour
     {
         var Missile = Instantiate(rocketPrefab, bulletSpawn.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         Missile.GetComponent<Rigidbody2D>().velocity = transform.right * missileSpeed;
+        
 
         Destroy(Missile, 4);
     }

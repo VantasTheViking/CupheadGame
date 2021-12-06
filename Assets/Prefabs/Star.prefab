@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3973676547965506166}
   - component: {fileID: 4757245794560755076}
   - component: {fileID: 1052754365}
+  - component: {fileID: -8677741680029591346}
   m_Layer: 8
   m_Name: Star
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3427831825736573458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.52, y: 1.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 408f063d7fa279f45b49845485f29ddb, type: 3}
-  m_Color: {r: 0.96101236, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78039217}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -184,3 +185,16 @@ PolygonCollider2D:
       - {x: 0.37976825, y: -1.1590614}
       - {x: 0.4729265, y: -1.167017}
       - {x: 0.47819713, y: -1.2744386}
+--- !u!114 &-8677741680029591346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427831825736573458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2adebb7fcb5bb4cb258815f52b7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layer: 7

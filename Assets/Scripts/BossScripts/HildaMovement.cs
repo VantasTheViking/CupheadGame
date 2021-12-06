@@ -7,6 +7,7 @@ public class HildaMovement : MonoBehaviour
     [SerializeField] GameObject hilda;
     Phase1Attacks phase1Attacks;
     Phase2Attacks phase2Attacks;
+    GlobalController global;
 
     float initialY;
     float initialX;
@@ -23,6 +24,7 @@ public class HildaMovement : MonoBehaviour
 
         phase1Attacks = GetComponent<Phase1Attacks>();
         phase2Attacks = GetComponent<Phase2Attacks>();
+        global = GetComponent<GlobalController>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class HildaMovement : MonoBehaviour
 
         else if (!isShooting && phase3)
         {
-            hilda.transform.position = new Vector3(initialX, initialY + Mathf.Sin(movementTimer * 3), gameObject.transform.position.z);
+            hilda.transform.position = new Vector3(gameObject.transform.position.x, initialY + Mathf.Sin(movementTimer * 3), gameObject.transform.position.z);
             movementTimer += Time.deltaTime;
         }
 
@@ -45,9 +47,19 @@ public class HildaMovement : MonoBehaviour
         {
             isShooting = true;
         }
-        else 
+
+        else if (phase2Attacks.GetIsSpiral() && global.GetPhase() == 2)
+        {
+            isShooting = true;
+        }
+        else
         {
             isShooting = false;
+        }
+
+        if (global.GetPhase() == 3)
+        {
+            phase3 = true;
         }
     }
 

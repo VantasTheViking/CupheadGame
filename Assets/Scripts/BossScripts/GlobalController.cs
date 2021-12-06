@@ -7,8 +7,10 @@ public class GlobalController : MonoBehaviour
 {
     [Tooltip("The fraction of max health/x to change phase (float)")]
     [SerializeField] private float _phaseDivider;
+    CameraBorder cam;
 
     GameObject hildaObject;
+    [SerializeField] GameObject background;
 
     int _health;
     int maxHealth;
@@ -17,6 +19,9 @@ public class GlobalController : MonoBehaviour
     bool phase2;
     bool phase3;
 
+    public float darkTimer;
+    public bool nightTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,8 @@ public class GlobalController : MonoBehaviour
         //Debug.Log(maxHealth);
 
         hildaObject = GameObject.Find("Hilda");
+        cam = GameObject.Find("Main Camera").GetComponent<CameraBorder>();
+        
     }
 
     // Update is called once per frame
@@ -33,7 +40,8 @@ public class GlobalController : MonoBehaviour
 
         if (_health <= 0)
         {
-            Destroy(gameObject, 0);
+            gameObject.GetComponent<Animator>().SetBool("Dead", true);
+            GameObject.Find("Player").GetComponent<PolygonCollider2D>().enabled = false;
         }
 
         if (maxHealth - (maxHealth / _phaseDivider) >= _health && (!phase2 || !phase3))
@@ -48,6 +56,18 @@ public class GlobalController : MonoBehaviour
             Debug.Log("Phase 3 start");
             endPhase2();
             startPhase3();
+
+            if (!nightTime)
+            {
+                DarkenScene();
+            }
+            else
+            {
+                cam.SetShader(0);
+                Destroy(background);
+            }
+
+            
         }
     }
 
@@ -56,14 +76,15 @@ public class GlobalController : MonoBehaviour
         phase1 = false;
         gameObject.GetComponent<Phase1Attacks>().enabled = false;
 
+        gameObject.GetComponents<PolygonCollider2D>()[0].enabled = false;
+        gameObject.GetComponents<PolygonCollider2D>()[1].enabled = true;
+
         //since we used multiple components I think this is necessary
         for(int i = 0; i < hildaObject.GetComponents<EnemyPlaneSpawn>().Length; i++)
         {
             hildaObject.GetComponents<EnemyPlaneSpawn>()[i].enabled = false;
         }
 
-        //remove comment once Phase1Attacks is made
-        //gameObject.GetComponent<Phase1Attacks>().enabled = false;
     }
 
     
@@ -80,6 +101,12 @@ public class GlobalController : MonoBehaviour
         phase2 = false;
 
         gameObject.GetComponent<Phase2Attacks>().enabled = false;
+
+        gameObject.GetComponents<PolygonCollider2D>()[1].enabled = false;
+        gameObject.GetComponents<PolygonCollider2D>()[2].enabled = true;
+
+        gameObject.transform.position = new Vector3(3, 0, 1);
+        gameObject.transform.localScale = new Vector3(3, 3, 1);
     }
 
     void startPhase3()
@@ -88,7 +115,33 @@ public class GlobalController : MonoBehaviour
         gameObject.GetComponent<Phase3Attacks>().enabled = true;
         hildaObject.GetComponent<UFOSpawn>().enabled = true;
 
-        //remove comment once Phase1Attacks is made
-        //gameObject.GetComponent<Phase3Attacks>().enabled = true;
+    }
+
+    void DarkenScene()
+    {
+        darkTimer += Time.deltaTime;
+
+        cam.SetShader(darkTimer/5);
+
+        if (darkTimer > 3f)
+        {
+            nightTime = true;
+        }
+    }
+
+    public int GetPhase()
+    {
+        if (phase2)
+        {
+            return 2;
+        }
+        if (phase3)
+        {
+            return 3;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }

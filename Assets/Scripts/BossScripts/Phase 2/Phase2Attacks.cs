@@ -144,7 +144,7 @@ public class Phase2Attacks : MonoBehaviour
     public void ShootAtAimer()
     {
         var bullet = Instantiate(waterBulletPrefab, transform.position, aimerParent.transform.rotation);
-        bullet.transform.Rotate(Vector3.forward * 90);
+        bullet.transform.Rotate(Vector3.forward * 270);
 
         bullet.GetComponent<Rigidbody2D>().velocity = aimerChild.transform.right * -1 * waterBulletSpeed;
 
@@ -178,7 +178,7 @@ public class Phase2Attacks : MonoBehaviour
     public void ShootFireSupport()
     {
         var bullet1 = Instantiate(waterBulletPrefab, fireSupportSpawn1.transform.position, fireSupportSpawn1.transform.rotation);
-        bullet1.transform.Rotate(Vector3.forward * 90);
+        bullet1.transform.Rotate(Vector3.forward * 270);
 
         bullet1.GetComponent<Rigidbody2D>().velocity = transform.right * -1 * waterBulletSpeed;
 
@@ -186,7 +186,7 @@ public class Phase2Attacks : MonoBehaviour
 
 
         var bullet2 = Instantiate(waterBulletPrefab, fireSupportSpawn2.transform.position, fireSupportSpawn2.transform.rotation);
-        bullet2.transform.Rotate(Vector3.forward * 90);
+        bullet2.transform.Rotate(Vector3.forward * 270);
 
         bullet2.GetComponent<Rigidbody2D>().velocity = transform.right * -1 * waterBulletSpeed;
 

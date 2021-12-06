@@ -13,7 +13,7 @@ public class EnemyBulet : MonoBehaviour
     {
         if (collision.gameObject.layer == _layer)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
 
             if (collision.gameObject.tag.Equals("Purple Enemy") || collision.gameObject.tag.Equals("Green Enemy"))
             {

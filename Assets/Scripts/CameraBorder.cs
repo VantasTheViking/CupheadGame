@@ -8,6 +8,7 @@ public class CameraBorder : MonoBehaviour
     [SerializeField] Camera _camera;
     [SerializeField] GameObject background;
     [SerializeField] GameObject nightBackground;
+    [SerializeField] GameObject shader;
     
     public Vector3 bL;
     public Vector3 tR;
@@ -37,14 +38,25 @@ public class CameraBorder : MonoBehaviour
 
         GameObject.Find("MeteorSpawn1").transform.position = new Vector3(bL.x + 5, tR.y + 1, 0);
         GameObject.Find("MeteorSpawn2").transform.position = new Vector3(tR.x - 4, tR.y + 1, 0);
-        
+
+        shader.transform.position = new Vector3(0, 0, 0);
+        shader.transform.localScale = new Vector3(tR.x * 2, tR.y*2, 0);
+        shader.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        
         _playerPos.transform.position = new Vector3(Mathf.Clamp(_playerPos.transform.position.x, camRect.xMin + 0.5f, camRect.xMax - 0.5f), Mathf.Clamp(_playerPos.transform.position.y, camRect.yMin + 0.25f, camRect.yMax - 0.25f), _playerPos.transform.position.z);
+    }
+
+    public void SetShader(float darknessLevel)
+    {
+        shader.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, darknessLevel);
     }
 }
 

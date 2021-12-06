@@ -17,14 +17,12 @@ public class BossHealth : MonoBehaviour
             Destroy(collision.gameObject, 0);
 
             takeDamage(1);
-
-            //Debug.Log(_health);
         }
     }
 
-    public void takeDamage(int value)
+    public void takeDamage(int damage)
     {
-        _health -= value;
+        _health -= damage;
     }
 
     public int getHealth()
