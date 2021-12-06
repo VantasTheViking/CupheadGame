@@ -95,7 +95,7 @@ public class Phase2Attacks : MonoBehaviour
         meteorActivated = false;
         bubbleActivated = false;
         fireSupportActivated = false;
-
+        randomNumber = Random.Range(1, 4);
         switch (randomNumber)
         {
             case 1:
