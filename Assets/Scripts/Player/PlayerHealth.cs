@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     void takeDamage(int damage)
     {
-        if (gameObject.GetComponent<PlayerControl>().invincible)
+        if (!gameObject.GetComponent<PlayerControl>().invincible)
         {
             _health -= damage;
         }
@@ -51,6 +51,16 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.layer == _layer)
         {
             takeDamage(1);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == _layer)
+        {
+            takeDamage(1);
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+
         }
     }
 

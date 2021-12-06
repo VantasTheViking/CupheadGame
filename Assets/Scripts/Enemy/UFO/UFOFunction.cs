@@ -64,7 +64,7 @@ public class UFOFunction : MonoBehaviour
     {
         laser = Instantiate(_laserPrefab, _laserSpawn.transform.position, Quaternion.Euler(0,0,0));
         laser.transform.parent = gameObject.transform;
-        laser.transform.localScale = new Vector3(0.5f, 22f, 0);
+        //laser.transform.localScale = new Vector3(0.5f, 22f, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
