@@ -25,6 +25,7 @@ public class UFOSpawn : MonoBehaviour
     {
         if (canSpawn())
         {
+            isSpawning = true;
             for (int x = 0; x < 3; x++)
             {
                 StartCoroutine(WaitToSpawn((x * 3) + 3));
@@ -45,7 +46,6 @@ public class UFOSpawn : MonoBehaviour
         if (timeToNext < Time.realtimeSinceStartup)
         {
             timeToNext = Time.realtimeSinceStartup + _spawnDelay;
-            isSpawning = true;
             return true;
         }
         else

@@ -2067,7 +2067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UFOPrefab: {fileID: 2368574991778452775, guid: cc6c48b57a668db46a32447cfcd40333, type: 3}
   _spawnPoint: {fileID: 2112641359}
-  _spawnDelay: 3
+  _spawnDelay: 10
   _UFOSpeed: 2
 --- !u!114 &1436150549
 MonoBehaviour:
@@ -2123,8 +2123,8 @@ MonoBehaviour:
   maxLaughRateOfFire: 400
   tornadoPrefab: {fileID: 7591430774985560367, guid: c8babd925a301a543938dfb8406999df, type: 3}
   tornadoSpeed: 12
-  minTornadoRateOfFire: 300
-  maxTornadoRateOfFire: 600
+  minTornadoRateOfFire: 700
+  maxTornadoRateOfFire: 1300
   player: {fileID: 1493175391}
 --- !u!114 &1436150552
 MonoBehaviour:

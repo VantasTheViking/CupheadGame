@@ -43,7 +43,6 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(invincible);
         Move();
 
         if (Input.GetKeyDown(KeyCode.N) && GetComponent<PlayerHealth>().GetCardsFull())
