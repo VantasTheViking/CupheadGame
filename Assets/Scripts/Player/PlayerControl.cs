@@ -98,6 +98,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         rocket = false;
+        invincible = false;
         GetComponent<SpriteRenderer>().sprite = baseSprite;
         GetComponent<Animator>().enabled = true;
     }
