@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31c924ef9f748942980a142e9ee99f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
+  _health: 1000
   _layer: 3
 --- !u!114 &1436150544
 MonoBehaviour:
