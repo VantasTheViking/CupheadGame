@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2744084535940005823}
   - component: {fileID: -8349078938979153861}
   - component: {fileID: -9059672739865225413}
+  - component: {fileID: -7799739490881425000}
   m_Layer: 6
   m_Name: Green Enemy
   m_TagString: Green Enemy
@@ -251,3 +252,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb8f6e58e757094b8db351aec7c8c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7799739490881425000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837555148578019749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820a68dc05fb0e047a4ce2d541babfc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
