@@ -17,6 +17,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] GameObject rocketPrefab;
 
     [SerializeField] float missileSpeed;
+
+    [SerializeField] Sprite rocketSprite;
+
+    [SerializeField] Sprite baseSprite;
     
     bool isColliding;
     float timeToNextShot = 0;
@@ -37,6 +41,18 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         Move();
+
+        if (Input.GetKeyDown(KeyCode.N) && GetComponent<PlayerHealth>().GetCardsFull())
+        {
+            //Debug.Log("test1");
+
+            StartCoroutine(rocketWait(5));
+        }
+
+        if (Input.GetKeyDown(KeyCode.N) && canMissile())
+        {
+            ShootMissile();
+        }
     }
 
     private void FixedUpdate()
@@ -44,16 +60,6 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && CanShoot())
         {
             ShootBullet();
-        }
-
-        if (Input.GetKey(KeyCode.N) && GetComponent<PlayerHealth>().GetCardsFull())
-        {
-            GetComponent<PlayerHealth>().ResetCards();
-        }
-
-        if (Input.GetKey(KeyCode.N) && canMissile())
-        {
-            ShootMissile();
         }
     }
 
@@ -65,6 +71,32 @@ public class PlayerControl : MonoBehaviour
         bullet.layer = 3;
 
         Destroy(bullet, 5);
+    }
+
+    void becomeRocket()
+    {
+        //Debug.Log("Test3");
+        rocket = true;
+        GetComponent<SpriteRenderer>().sprite = rocketSprite;
+        GetComponent<Animator>().enabled = false;
+    }
+
+    IEnumerator rocketWait(float seconds)
+    {
+        //Debug.Log("test2");
+        GetComponent<PlayerHealth>().ResetCards();
+        becomeRocket();
+        yield return new WaitForSeconds(seconds);
+
+        //Debug.Log("Test4");
+        if(Vector3.Distance(GameObject.Find("Hilda").transform.position, trans.position) < 5)
+        {
+            GameObject.Find("Hilda").GetComponent<BossHealth>().takeDamage(20);
+        }
+
+        rocket = false;
+        GetComponent<SpriteRenderer>().sprite = baseSprite;
+        GetComponent<Animator>().enabled = true;
     }
 
     bool CanShoot()
@@ -91,13 +123,13 @@ public class PlayerControl : MonoBehaviour
 
     bool canMissile()
     {
-        Debug.Log("check1");
+        //Debug.Log("check1");
         for(int i = 0; i < 5; i++)
         {
-            Debug.Log($"check2 {i}");
+            //Debug.Log($"check2 {i}");
             if (GetComponent<PlayerHealth>().GetCardGauge(5 - i) >= 50)
             {
-                Debug.Log("check3");
+                //Debug.Log("check3");
                 GetComponent<PlayerHealth>().resetCardGauge(5 - i);
 
                 for(int v = 0; v < 5; v++)

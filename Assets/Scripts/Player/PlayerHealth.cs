@@ -76,7 +76,7 @@ public class PlayerHealth : MonoBehaviour
 
     public bool GetCardsFull()
     {
-        if (card1 == 50 && card2 == 50 && card3 == 50 && card4 == 50 && card5 == 50)
+        if (card1 >= 50 && card2 >= 50 && card3 >= 50 && card4 >= 50 && card5 >= 50)
         {
             return true;
         }
