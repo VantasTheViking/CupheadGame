@@ -41,25 +41,29 @@ public class UFOFunction : MonoBehaviour
 
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialY + Mathf.Sin(Time.realtimeSinceStartup * 6)/4, gameObject.transform.position.z);
 
-        StartCoroutine(waitToShoot(2));
+        StartCoroutine(waitToShoot((float)(Random.Range(1000, 1600) / 100)));
 
-        if (_trans.position.x < _despawn)
-        {
-            Destroy(laser, 0);
-        }
 
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, initialY + Mathf.Sin(Time.realtimeSinceStartup * 6) / 4, gameObject.transform.position.z);
     }
 
-    IEnumerator waitToShoot(int seconds)
+    IEnumerator waitToShoot(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         if (!shot)
         {
             Shoot();
             shot = true;
+            StartCoroutine(WaitToDespawn(1f));
         }
     }
+
+    IEnumerator WaitToDespawn(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(laser);
+    }
+
     void Shoot()
     {
         laser = Instantiate(_laserPrefab, _laserSpawn.transform.position, Quaternion.Euler(0,0,0));

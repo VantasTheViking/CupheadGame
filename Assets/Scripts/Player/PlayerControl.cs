@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Sprite rocketSprite;
 
     [SerializeField] Sprite baseSprite;
+
+    PlayerHealth health;
     
     bool isColliding;
     float timeToNextShot = 0;
@@ -35,6 +37,7 @@ public class PlayerControl : MonoBehaviour
     {
         trans = GetComponent<Transform>();
         body = GetComponent<Rigidbody2D>();
+        health = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -56,7 +59,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) && CanShoot(rocket))
+        if (Input.GetKey(KeyCode.Space) && CanShoot(rocket) && health.getHealth() > 0)
         {
             ShootBullet();
         }

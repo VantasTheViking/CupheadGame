@@ -42,7 +42,6 @@ public class Phase3Attacks : MonoBehaviour
         
         if (starDelay < Time.realtimeSinceStartup)
         {
-            //Debug.Log(waterBulletsLeft);
             starDelay = Time.realtimeSinceStartup + (randomRateofFire / 100);
             return true;
         }

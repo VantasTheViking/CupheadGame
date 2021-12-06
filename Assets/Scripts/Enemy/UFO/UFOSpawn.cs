@@ -18,14 +18,26 @@ public class UFOSpawn : MonoBehaviour
     [SerializeField] public float _UFOSpeed;
 
     private float timeToNext = 0;
+    bool isSpawning;
 
     // Update is called once per frame
     void Update()
     {
         if (canSpawn())
         {
-            spawnUFO();
+            for (int x = 0; x < 3; x++)
+            {
+                StartCoroutine(WaitToSpawn((x * 3) + 3));
+            }
+           
         }
+    }
+
+    IEnumerator WaitToSpawn(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        spawnUFO();
+        isSpawning = false;
     }
 
     bool canSpawn()
@@ -33,6 +45,7 @@ public class UFOSpawn : MonoBehaviour
         if (timeToNext < Time.realtimeSinceStartup)
         {
             timeToNext = Time.realtimeSinceStartup + _spawnDelay;
+            isSpawning = true;
             return true;
         }
         else
@@ -45,5 +58,10 @@ public class UFOSpawn : MonoBehaviour
     {
         var Plane = Instantiate(_UFOPrefab, new Vector3(_spawnPoint.transform.position.x + 5, _spawnPoint.transform.position.y, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         Plane.GetComponent<Rigidbody2D>().velocity = -transform.right * _UFOSpeed;
+    }
+
+    public bool GetIsSpawning()
+    {
+        return isSpawning;
     }
 }

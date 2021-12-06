@@ -9,6 +9,7 @@ public class HildaAnim : MonoBehaviour
     Phase2Attacks phase2;
     Phase3Attacks phase3;
     GlobalController global;
+    UFOSpawn UFO;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class HildaAnim : MonoBehaviour
         phase1 = GetComponent<Phase1Attacks>();
         phase3 = GetComponent<Phase3Attacks>();
         global = GetComponent<GlobalController>();
-
+        UFO = GetComponent<UFOSpawn>();
     }
 
     void Update()
@@ -28,6 +29,15 @@ public class HildaAnim : MonoBehaviour
         else
         {
             anim.SetBool("Laughing", false);
+        }
+
+        if (UFO.GetIsSpawning())
+        {
+            anim.SetBool("UFO", true);
+        }
+        else
+        {
+            anim.SetBool("UFO", false);
         }
 
         switch (global.GetPhase())

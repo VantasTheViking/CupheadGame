@@ -96,9 +96,6 @@ public class Phase2Attacks : MonoBehaviour
         bubbleActivated = false;
         fireSupportActivated = false;
 
-        randomNumber = Random.Range(1, 4);
-        Debug.Log("RandomNumber:");
-        Debug.Log(randomNumber);
         switch (randomNumber)
         {
             case 1:
@@ -132,7 +129,6 @@ public class Phase2Attacks : MonoBehaviour
     {
         if(shotDelay < Time.realtimeSinceStartup && bubbleActivated == true)
         {
-            //Debug.Log(waterBulletsLeft);
             shotDelay = Time.realtimeSinceStartup + waveOfBullets_RateOfFire;
             return true;
         }

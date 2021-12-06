@@ -52,7 +52,7 @@ public class HildaMovement : MonoBehaviour
         {
             isShooting = true;
         }
-        else
+        else 
         {
             isShooting = false;
         }

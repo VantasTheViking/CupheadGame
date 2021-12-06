@@ -26,7 +26,6 @@ public class GlobalController : MonoBehaviour
     void Start()
     {
         maxHealth = GetComponent<BossHealth>().getHealth();
-        //Debug.Log(maxHealth);
 
         hildaObject = GameObject.Find("Hilda");
         cam = GameObject.Find("Main Camera").GetComponent<CameraBorder>();
@@ -49,14 +48,12 @@ public class GlobalController : MonoBehaviour
 
         if (maxHealth - (maxHealth / _phaseDivider) >= _health && (!phase2 || !phase3))
         {
-            Debug.Log("Phase 2 start");
             endPhase1();
             startPhase2();
         }
 
         if(maxHealth - (maxHealth / _phaseDivider)*2 >= _health && (!phase1 || !phase3))
         {
-            Debug.Log("Phase 3 start");
             endPhase2();
             startPhase3();
 
