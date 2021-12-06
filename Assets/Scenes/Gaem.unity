@@ -1756,7 +1756,7 @@ MonoBehaviour:
   aimerParent: {fileID: 1545638384}
   rateOfRotation: 45
   waveOfBullets_RateOfFire: 0.2
-  waterBulletPrefab: {fileID: 120390567460456021, guid: 7d039a898d538df4aac133afd2dbd10a, type: 3}
+  waterBulletPrefab: {fileID: 120390567460456021, guid: 81267e365b913524a8457cf4c272e258, type: 3}
   waterBulletSpeed: 4
   bubbleMeteorFrequency: 6
   bubbleMeteorPrefab: {fileID: 1334318672237895126, guid: 89589cfd9a49dbd43b8cbb72976c702e, type: 3}
@@ -1944,7 +1944,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 3427831825736573458, guid: 71d837550d98dd641a1b7a9e4ae0ff51, type: 3}
-  starSpawn: {fileID: 1311694352}
   starSpeed: 12
   minStarRateOfFire: 150
   maxStarRateOfFire: 200
